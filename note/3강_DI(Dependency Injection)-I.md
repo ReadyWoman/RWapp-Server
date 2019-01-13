@@ -86,11 +86,17 @@ public class MainClass {
 
 }
 ```
-> String configLocation = "classpath:applicationCTX.xml";
+```
+String configLocation = "classpath:applicationCTX.xml";
+```
 configLocation에 xml의 classpath를 넣어주고, 
-> AbstractApplicationContext ctx = new GenericXmlApplicationContext(configLocation); 
+```
+AbstractApplicationContext ctx = new GenericXmlApplicationContext(configLocation); 
+```
 에서 파싱한다. 이 프로젝트의 context를 구한다.
-> MyCalculator myCalculator = ctx.getBean("myCalculator", MyCalculator.class); 
+```
+MyCalculator myCalculator = ctx.getBean("myCalculator", MyCalculator.class); 
+```
 getBean을 통해 Bean을 얻어온다, 첫번째 값은 bean의 id, 두번째 값은 타입, 클래스 이름
 
 ### 3-2. 스프링 설정 파일의 이해
