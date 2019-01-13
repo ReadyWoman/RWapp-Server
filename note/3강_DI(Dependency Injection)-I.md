@@ -100,7 +100,6 @@ MyCalculator myCalculator = ctx.getBean("myCalculator", MyCalculator.class);
 ```
 getBean을 통해 Bean을 얻어온다, 첫번째 값은 bean의 id, 두번째 값은 타입, 클래스 이름
 
-
 ### 3-2. 스프링 설정 파일의 이해
 
 - xml 파일을 스프링 설정 파일이라고 한다.
@@ -112,5 +111,5 @@ getBean을 통해 Bean을 얻어온다, 첫번째 값은 bean의 id, 두번째 �
   - 필드이름으로 property name 설정
 
 ### 정리
-객체를 만들 때 new를 이용해서 생성할 수도 있지만 그다지 좋은 방법은 아님
-스프링의 특징, DI를 이용해서 xml 파일에 객체를 생성하고 어딘가에 주입해서 조립해서 객체를 만들 수도 있음
+- 객체를 만들 때 new를 이용해서 생성할 수도 있지만 그다지 좋은 방법은 아님
+- 스프링의 특징, DI를 이용해서 xml 파일에 객체를 생성하고 어딘가에 주입해서 조립해서 객체를 만들 수도 있음
