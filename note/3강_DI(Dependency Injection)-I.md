@@ -8,14 +8,14 @@
 A, B, C라는 객체가 있을 때
  - A가 직접 new B()를 해서 B, C 객체를 사용하는 방법과
  - 외부의 어떤 객체가 만든 B, C 객체를 setter 또는 constructor를 통해 A에서 사용하는 방법이 있음
-> 스프링은 후자의 방법을 사용한다.
+스프링은 후자의 방법을 사용한다.
 
 ### 3-1. 스프링을 이용한 객체 생성과 조립
 
 - **스프링은 객체를 생성하고 조립한다.**
 - 생성 시 xml 파일 이용
 
-##### <spring project 비교> 
+#### <spring project 비교> 
 - spring 기법을 사용하지 않은 플젝 > spring_3_1_ex1_springex
 - spring 기법을 사용한 플젝 > spring_3_1_ex2_springex
 
@@ -86,6 +86,7 @@ public class MainClass {
 
 }
 ```
+#### 코드 풀이
 ```
 String configLocation = "classpath:applicationCTX.xml";
 ```
@@ -99,4 +100,17 @@ MyCalculator myCalculator = ctx.getBean("myCalculator", MyCalculator.class);
 ```
 getBean을 통해 Bean을 얻어온다, 첫번째 값은 bean의 id, 두번째 값은 타입, 클래스 이름
 
+
 ### 3-2. 스프링 설정 파일의 이해
+
+- xml 파일을 스프링 설정 파일이라고 한다.
+- 스프링 설정 파일 = 스프링 config file
+- <beans> 태그 안에 사용자가 사용하려는 객체들을 <bean> 태그를 이용해서 만들어줌
+- class 이름은 패키지 이름까지 들어간 완전한 이름으로 써준다.
+- bean > property > ref 에서는 외부의 객체(bean)를 참조할 때 사용할 수 있다.
+  - **필드와 필드에 대한 setter가 있어야지 참조 가능!**
+  - 필드이름으로 property name 설정
+
+### 정리
+객체를 만들 때 new를 이용해서 생성할 수도 있지만 그다지 좋은 방법은 아님
+스프링의 특징, DI를 이용해서 xml 파일에 객체를 생성하고 어딘가에 주입해서 조립해서 객체를 만들 수도 있음
