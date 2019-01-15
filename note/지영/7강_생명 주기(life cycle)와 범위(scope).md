@@ -7,6 +7,7 @@
 (spring_7_1_ex1_springex)
 
 생명 주기 | 코드
+--- | ---
 스프링 컨테이너 **생성** | AbstractApplicationContext ctx = new GenericXmlApplicationContext("");
 ↓ | ↓
 스프링 컨테이너 **설정** | ctx.load("classpath:applicationCTX.xml");
