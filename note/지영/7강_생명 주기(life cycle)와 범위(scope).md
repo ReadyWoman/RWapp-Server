@@ -7,15 +7,15 @@
 (spring_7_1_ex1_springex)
 
 생명 주기 | 코드
---- | ---
+:---: | :---:
 스프링 컨테이너 **생성** | AbstractApplicationContext ctx = new GenericXmlApplicationContext("");
 ↓ | ↓
 스프링 컨테이너 **설정** | ctx.load("classpath:applicationCTX.xml");
- | ctx.refresh(); //load를 하면 꼭 refresh해줘야함
+  | ctx.refresh(); //load를 하면 꼭 refresh해줘야함
 ↓ | ↓
 스프링 컨테이너 **사용** | Student student = ctx.getBean("student", Student.class);
- | System.out.println("이름 : " + student.getName());
- | System.out.println("나이 : " + student.getAge());
+  | System.out.println("이름 : " + student.getName());
+  | System.out.println("나이 : " + student.getAge());
 ↓ | ↓
 스프링 컨테이너 **종료** | ctx.close(); //자원 해제
 
