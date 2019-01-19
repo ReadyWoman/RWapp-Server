@@ -1,0 +1,45 @@
+﻿스프링 8강: AOP-1
+외부 파일을 이용한 설정
+
+1. Environment 객체를 이용해 스프링 빈 설정
+
+Context -> Environment -> PropertySources
+
+Context -> Environment : ctx.getEnvironment()
+
+Environment -> PropertySources: env.getPropertySources()
+
+Property 추가 및 추출
+추가: propertySources.addLast();
+추출: env.getProperty()
+
+
+2. Environment 객체 사용 없이 Property 파일을 직접 이용하여 스프링 빈을 설정하는 방법
+
+2-1. XML파일(applicationCTX.xml)에 명시
+예) admin.properties, sub_admin.properties (외부파일)
+<context:property-placeholder location="classpath:admin.properties, classpath:sub-admin.properties"/>을 추가
+
+namespace 탭에서 context 추가
+
+2-2. Java파일(ApplicationConfig.java)에 명시
+예) admin.properties, sub_admin.properties (외부파일)
+public static PropertySourcesPlaceholderConfigurer Properties(){} 필요 ~외부파일을 설정하는 메소드
+
+
+3.Profile 속성일 이용한 설정
+동일한 스프링 빈을 여러개 만들어 놓고 상황(환경)에 따라서 적절한 스프링 빈을 사용할 수 있음
+
+스프링 컨테이너 - setActiveProfiles(config) ~어떤 설정파일을 사용할지 결정함
+
+3-1. XML설정 파일
+profile="dev" load
+profile="run" load
+
+3-2. Java설정 파일
+@Profile("dev")
+@Profile("run")
+
+
+
+
