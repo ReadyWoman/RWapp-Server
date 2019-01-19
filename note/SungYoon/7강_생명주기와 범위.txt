@@ -1,0 +1,43 @@
+﻿스프링 7강: 생명주기와 범위
+7-1. 스프링 컨테이너의 생명주기
+7-2. 스프링 빈의 생명주기
+7-3. 스프링 빈의 범위
+
+1. 스프링 컨테이너의 생명주기
+
+//스프링 컨테이너 생성
+AbstractApplicationContext ctx = new GenericXmlApplicationContext();
+
+//스프링 컨테이너 설정
+ctx.load("classpath:applicationCTX.xml");
+
+ctx.refresh();//빈 생성
+
+//스프링 컨테이너 사용
+Student student1 = ctx.getBean("student", Student.class);
+
+//스프링 컨테이너 종료(동시에 빈 소멸)
+ctx.close();
+
+
+2. 스프링 빈의 생명주기
+1) implements InitializingBean, DisposableBean 
+
+InitializingBean은 빈 초기화 과정에서 호출
+@Override
+public void afterPropertiesSet() throw Exception
+
+DisposableBean은 빈 소멸 과정에서 생성
+@Override
+public void destory() throw Exception
+
+(컨테이너가 소멸되면 빈은 자동 소멸)
+
+
+2) 어노테이션 사용 @PostConstruct @PreDestroy
+public void initMethod()
+public void destroyMethod()
+
+
+3. 스프링 빈의 범위
+객체가 어디까지 영향을 미치는지
