@@ -1,0 +1,75 @@
+﻿스프링 6강: DI 설정 방법
+6-1. XML파일을 이용한 DI설정
+6-2. Java파일을 이용한 DI설정
+6-3. XML파일과 Java파일을 같이 이용한 방법
+
+6-1. XML파일을 이용한 DI설정
+생성자를 사용할 경우 <contructor-arg> 사용
+setter()로 사용할 경우 <property> 사용
+
+
+6-2. Java파일을 이용한 DI설정
+ApplicationConfig.java 파일 생성
+@Configuration
+public class ApplicationConfig {
+	
+	@Bean
+	public Student student1() {
+		
+		ArrayList<String> hobbys = new ArrayList<String>();
+		hobbys.add("수영");
+		hobbys.add("요리");
+		
+		Student student = new Student("홍길동");
+		student.setAge(10);
+		student.setHobbys(hobbys);
+		return student;
+	}
+	
+	@Bean
+	public Student student2() {
+		ArrayList<String> hobbys = new ArrayList<String>();
+		hobbys.add("독서");
+		hobbys.add("게임");
+		
+		Student student = new Student("김미나");
+		student.setAge(12);
+		student.setHobbys(hobbys);
+		return student;
+	}
+
+}
+
+MainClass에서
+AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+		
+Student student1 = ctx.getBean("student1", Student.class);
+System.out.println(student1.getName());
+System.out.println(student1.getAge());
+System.out.println(student1.getHobbys());
+
+
+6-3. XML파일과 Java파일을 둘다 이용
+
+1) XML파일에 Java파일을 포함시키는 방법
+<context:annotation-config />
+<bean class="com.javalec.ex.ApplicationConfig"/>
+
+2) Java파일에 XML파일을 포함시키는 방법
+@ImportResource("classpath:applicationCTX.xml") 추가
+public class ApplicationConfig {
+	
+	@Bean
+	public Student student1() {
+		
+		ArrayList<String> hobbys = new ArrayList<String> ();
+		hobbys.add("수영");
+		hobbys.add("요리");
+		
+		Student student = new Student("홍길동", 20, hobbys); //생성자 이용
+		student.setHeight(180); //setter() 이용
+		student.setWeight(80);
+		
+		return student;
+	}
+}
