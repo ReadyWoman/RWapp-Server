@@ -9,6 +9,7 @@
 예를 들어 StudentInfo 객체는 Student객체에 의존한다.
 
 1. applicationCTX.xml
+
 <bean id="studentInfo" class="com.javalec.ex.StudentInfo">
 	<contructor-arg>
 		<ref bean="student1" />
@@ -16,8 +17,11 @@
 </bean>
 
 2. Java 파일
+
 Student student2 = ctx.getBean("student2", Student.class);
+
 studentInfo.setStudent(student2);
+
 studentInfo.getStudentInfo();
 
 ***
