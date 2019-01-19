@@ -1,15 +1,15 @@
-½ºÇÁ¸µ 6°­: DI ¼³Á¤ ¹æ¹ı
-6-1. XMLÆÄÀÏÀ» ÀÌ¿ëÇÑ DI¼³Á¤
-6-2. JavaÆÄÀÏÀ» ÀÌ¿ëÇÑ DI¼³Á¤
-6-3. XMLÆÄÀÏ°ú JavaÆÄÀÏÀ» °°ÀÌ ÀÌ¿ëÇÑ ¹æ¹ı
+ï»¿ìŠ¤í”„ë§ 6ê°•: DI ì„¤ì • ë°©ë²•
+6-1. XMLíŒŒì¼ì„ ì´ìš©í•œ DIì„¤ì •
+6-2. JavaíŒŒì¼ì„ ì´ìš©í•œ DIì„¤ì •
+6-3. XMLíŒŒì¼ê³¼ JavaíŒŒì¼ì„ ê°™ì´ ì´ìš©í•œ ë°©ë²•
 
-6-1. XMLÆÄÀÏÀ» ÀÌ¿ëÇÑ DI¼³Á¤
-»ı¼ºÀÚ¸¦ »ç¿ëÇÒ °æ¿ì <contructor-arg> »ç¿ë
-setter()·Î »ç¿ëÇÒ °æ¿ì <property> »ç¿ë
+6-1. XMLíŒŒì¼ì„ ì´ìš©í•œ DIì„¤ì •
+ìƒì„±ìë¥¼ ì‚¬ìš©í•  ê²½ìš° <contructor-arg> ì‚¬ìš©
+setter()ë¡œ ì‚¬ìš©í•  ê²½ìš° <property> ì‚¬ìš©
 
 
-6-2. JavaÆÄÀÏÀ» ÀÌ¿ëÇÑ DI¼³Á¤
-ApplicationConfig.java ÆÄÀÏ »ı¼º
+6-2. JavaíŒŒì¼ì„ ì´ìš©í•œ DIì„¤ì •
+ApplicationConfig.java íŒŒì¼ ìƒì„±
 @Configuration
 public class ApplicationConfig {
 	
@@ -17,10 +17,10 @@ public class ApplicationConfig {
 	public Student student1() {
 		
 		ArrayList<String> hobbys = new ArrayList<String>();
-		hobbys.add("¼ö¿µ");
-		hobbys.add("¿ä¸®");
+		hobbys.add("ìˆ˜ì˜");
+		hobbys.add("ìš”ë¦¬");
 		
-		Student student = new Student("È«±æµ¿");
+		Student student = new Student("í™ê¸¸ë™");
 		student.setAge(10);
 		student.setHobbys(hobbys);
 		return student;
@@ -29,10 +29,10 @@ public class ApplicationConfig {
 	@Bean
 	public Student student2() {
 		ArrayList<String> hobbys = new ArrayList<String>();
-		hobbys.add("µ¶¼­");
-		hobbys.add("°ÔÀÓ");
+		hobbys.add("ë…ì„œ");
+		hobbys.add("ê²Œì„");
 		
-		Student student = new Student("±è¹Ì³ª");
+		Student student = new Student("ê¹€ë¯¸ë‚˜");
 		student.setAge(12);
 		student.setHobbys(hobbys);
 		return student;
@@ -40,7 +40,7 @@ public class ApplicationConfig {
 
 }
 
-MainClass¿¡¼­
+MainClassì—ì„œ
 AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 		
 Student student1 = ctx.getBean("student1", Student.class);
@@ -49,25 +49,25 @@ System.out.println(student1.getAge());
 System.out.println(student1.getHobbys());
 
 
-6-3. XMLÆÄÀÏ°ú JavaÆÄÀÏÀ» µÑ´Ù ÀÌ¿ë
+6-3. XMLíŒŒì¼ê³¼ JavaíŒŒì¼ì„ ë‘˜ë‹¤ ì´ìš©
 
-1) XMLÆÄÀÏ¿¡ JavaÆÄÀÏÀ» Æ÷ÇÔ½ÃÅ°´Â ¹æ¹ı
+1) XMLíŒŒì¼ì— JavaíŒŒì¼ì„ í¬í•¨ì‹œí‚¤ëŠ” ë°©ë²•
 <context:annotation-config />
 <bean class="com.javalec.ex.ApplicationConfig"/>
 
-2) JavaÆÄÀÏ¿¡ XMLÆÄÀÏÀ» Æ÷ÇÔ½ÃÅ°´Â ¹æ¹ı
-@ImportResource("classpath:applicationCTX.xml") Ãß°¡
+2) JavaíŒŒì¼ì— XMLíŒŒì¼ì„ í¬í•¨ì‹œí‚¤ëŠ” ë°©ë²•
+@ImportResource("classpath:applicationCTX.xml") ì¶”ê°€
 public class ApplicationConfig {
 	
 	@Bean
 	public Student student1() {
 		
 		ArrayList<String> hobbys = new ArrayList<String> ();
-		hobbys.add("¼ö¿µ");
-		hobbys.add("¿ä¸®");
+		hobbys.add("ìˆ˜ì˜");
+		hobbys.add("ìš”ë¦¬");
 		
-		Student student = new Student("È«±æµ¿", 20, hobbys); //»ı¼ºÀÚ ÀÌ¿ë
-		student.setHeight(180); //setter() ÀÌ¿ë
+		Student student = new Student("í™ê¸¸ë™", 20, hobbys); //ìƒì„±ì ì´ìš©
+		student.setHeight(180); //setter() ì´ìš©
 		student.setWeight(80);
 		
 		return student;
