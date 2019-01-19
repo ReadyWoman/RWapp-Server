@@ -20,10 +20,13 @@ Student student2 = ctx.getBean("student2", Student.class);
 studentInfo.setStudent(student2);
 studentInfo.getStudentInfo();
 
-'''
+***
+
 setter()를 사용할 때는 property 키워드 사용
+
 생성자를 사용할 때는 contructor-arg 키워드 사용
-'''
+
+***
 
 ## DI 사용 장점
 - Java 파일 수정 없이 스프링 설정 파일만을 수정하여 부품들을 생성 및 조립할 수 있다.
